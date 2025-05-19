@@ -62,10 +62,11 @@ function App() {
 
   return (
     <div className={`${theme === "dark" ? "bg-gradient-to-b from-gray-900 to-gray-800 text-white" : "bg-white text-gray-900"} min-h-screen px-4 flex flex-col transition-colors duration-300`}>
+      
+      {/* Header */}
       <header className="flex justify-between items-center px-2 sm:px-6 py-4">
-        <h1 className="text-2xl font-bold text-center flex-1 ml-12">Image Search Engine</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-center flex-1 ml-10 sm:ml-12">Image Search Engine</h1>
         <div className="flex items-center">
-          <span className="text-sm font-semibold"></span>
           <label className="flex items-center cursor-pointer">
             <div className="relative">
               <input
@@ -81,39 +82,43 @@ function App() {
         </div>
       </header>
 
-      <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-indigo-700 rounded-lg flex overflow-hidden shadow-lg">
+      {/* Search Bar */}
+      <form onSubmit={handleSubmit} className="w-full max-w-3xl mx-auto bg-indigo-700 rounded-lg flex flex-col sm:flex-row overflow-hidden shadow-lg">
         <input
           type="text"
           placeholder="Search anything here..."
-          className="flex-1 px-5 py-4 bg-transparent text-white placeholder-white text-lg focus:outline-none"
+          className="w-full px-4 py-3 bg-transparent text-white placeholder-white text-base sm:text-lg focus:outline-none"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button className="bg-red-500 px-6 text-lg font-semibold hover:bg-red-600 transition-all">Search</button>
+        <button className="w-full sm:w-auto bg-red-500 px-4 py-3 text-base sm:text-lg font-semibold hover:bg-red-600 transition-all">
+          Search
+        </button>
       </form>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12 max-w-6xl mx-auto px-2">
+      {/* Image Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 max-w-6xl mx-auto px-2">
         {images.map((image) => (
           <div key={image.id} className="relative group overflow-hidden rounded-lg shadow-md">
             <img
               src={image.urls.small}
               alt={image.alt_description}
-              className="w-full h-[230px] object-cover group-hover:scale-110 transition-transform duration-300"
+              className="w-full h-[200px] sm:h-[230px] object-cover group-hover:scale-110 transition-transform duration-300"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-              <p className="text-sm font-semibold text-white mb-2">{image.user.name}</p>
-              <p className="text-xs text-gray-300 truncate mb-3">{image.alt_description || "No description"}</p>
-              <div className="flex gap-3">
+            <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 sm:p-4">
+              <p className="text-sm font-semibold text-white mb-1">{image.user.name}</p>
+              <p className="text-xs text-gray-300 truncate mb-2">{image.alt_description || "No description"}</p>
+              <div className="flex gap-2">
                 <a
                   href={image.links.download + "?force=true"}
                   download
-                  className="text-white font-semibold text-sm px-3 py-1 rounded-md border-none bg-green-500 shadow-md hover:bg-green-700 transition-all"
+                  className="text-white font-semibold text-xs sm:text-sm px-3 py-1 rounded-md bg-green-500 hover:bg-green-700 transition-all"
                 >
                   Download
                 </a>
                 <button
                   onClick={() => addToFavorites(image)}
-                  className={`text-sm px-3 py-1 rounded-md shadow-md ${isFavorited(image.id) ? "bg-red-600 text-white font-semibold border-none" : "bg-blue-500 text-white font-semibold border-none hover:bg-blue-700"}`}
+                  className={`text-xs sm:text-sm px-3 py-1 rounded-md ${isFavorited(image.id) ? "bg-red-600" : "bg-blue-500 hover:bg-blue-700"} text-white font-semibold transition-all`}
                 >
                   {isFavorited(image.id) ? "Favorited" : "Favorite"}
                 </button>
@@ -123,16 +128,19 @@ function App() {
         ))}
       </div>
 
+      {/* No Results */}
       {!loading && currentSearch && images.length === 0 && (
-        <div className="text-center mt-10 text-gray-400 text-xl">
+        <div className="text-center mt-10 text-gray-400 text-lg sm:text-xl">
           No results found for <strong>"{currentSearch}"</strong>
         </div>
       )}
 
+      {/* Loading */}
       {loading && (
         <div className="text-center mt-10 text-gray-400 text-lg">Loading...</div>
       )}
 
+      {/* Load More Button */}
       {images.length > 0 && !loading && (
         <div className="text-center mt-10 mb-24">
           <button
