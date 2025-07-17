@@ -1,12 +1,35 @@
-# React + Vite
+# 🖼️ Image Search App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Project Screenshot](screenshots/Image-Search.png)
 
-Currently, two official plugins are available:
+## 📌 Project Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a clean and responsive **Image Search App** developed using **React.js**, powered by the **Unsplash API** to fetch high-quality images based on user search queries.
 
-## Expanding the ESLint configuration
+The app features a stunning, modern interface and supports seamless toggling between **dark and light themes** to suit user preferences. Built to provide a smooth browsing experience, this app enhances your React skills in API handling, state management, and dynamic rendering.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📅 **Project Duration:** January 20, 2025 – January 25, 2025
+
+### ✅ Key Features
+
+- 🔎 **Search images** by keywords using the Unsplash API  
+- 🎨 Display of **high-resolution images** with responsive layout  
+- 🌓 Toggle between **Dark and Light Mode**  
+- ⚛️ Built using **React.js** for fast and reactive UI  
+- 📱 Fully responsive design – optimized for desktop and mobile  
+
+This project helped reinforce my understanding of API integration, component-based design, and React hooks.
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React.js, Tailwind CSS  
+- **API**: Unsplash API  
+- **Deployment**: GitHub Pages  
+
+## 🚀 Live Demo
+
+👉 [Click here to view the project](https://tahir1605.github.io/image-search/)  
+
+---
+
+
